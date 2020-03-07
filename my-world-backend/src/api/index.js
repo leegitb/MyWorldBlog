@@ -6,5 +6,6 @@ const api = new Router();
 
 api.use('/posts', posts.routes());
 api.use('/auth', auth.routes());
+
 // router 내보내기
 export default api;

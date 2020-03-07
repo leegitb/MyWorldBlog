@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   hashedPassword: String,
 });
 
-UserSchema.method.setPassword = async function(password) {
+UserSchema.methods.setPassword = async function(password) {
   const hash = await bcrypt.hash(password, 10);
   this.hashedPassword = hash;
 };
@@ -16,8 +16,14 @@ UserSchema.methods.checkPassword = async function(password) {
   return result; // true/false
 };
 
-UserSchema.statics.findUserName = function(username) {
+UserSchema.statics.findByUserName = function(username) {
   return this.findOne({ username });
+};
+
+UserSchema.methods.serialize = function() {
+  const data = this.toJSON();
+  delete data.hashedPassword;
+  return data;
 };
 
 const User = mongoose.model('User', UserSchema);
