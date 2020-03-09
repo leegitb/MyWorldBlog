@@ -1,14 +1,12 @@
 import React from 'react';
-import Button from '../components/common/Buttons';
+import HeaderContainer from '../containers/common/HeaderContainer';
 
 const PostListPage = () => {
   return (
-    <React.Fragment>
-      <div>POST LIST</div>
-      <div>
-        <Button>BUTTON</Button>
-      </div>
-    </React.Fragment>
+    <>
+      <HeaderContainer />
+      <div>Hi, I'm POST LIST.</div>
+    </>
   );
 };
 
