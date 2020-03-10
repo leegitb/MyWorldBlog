@@ -1,6 +1,31 @@
 import Post from '../../models/post';
 import mongoose from 'mongoose';
 import Joi from '@hapi/joi';
+import sanitizeHtml from 'sanitize-html';
+
+const sanitizeOption = {
+  allowedTags: [
+    'h1',
+    'h2',
+    'b',
+    'i',
+    'u',
+    's',
+    'p',
+    'ul',
+    'ol',
+    'li',
+    'blockquote',
+    'a',
+    'img',
+  ],
+  allowedAttributes: {
+    a: ['href', 'name', 'target'],
+    img: ['src'],
+    li: ['class'],
+  },
+  allowedSchemes: ['data', 'http'],
+};
 
 /* 
 데이터 생성(게시물 생성)
@@ -37,7 +62,7 @@ export const write = async ctx => {
 
   const post = new Post({
     title,
-    body,
+    body: sanitizeHtml(body, sanitizeOption),
     tags,
     user: ctx.state.user, // DB에 사용자 정보 저장
   });
@@ -48,6 +73,13 @@ export const write = async ctx => {
   } catch (e) {
     ctx.throw(500, e);
   }
+};
+
+const removeHtmlAndShorten = body => {
+  const filtered = sanitizeHtml(body, {
+    allowedTags: [],
+  });
+  return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
 };
 
 /* 
@@ -87,15 +119,10 @@ export const list = async ctx => {
     const postCount = await Post.countDocuments(query).exec();
     ctx.set('Last-Page', Math.ceil(postCount / 10));
 
-    ctx.body = posts;
-    // body가 200이 넘어가면 ...붙이고 문자열 자르기.
-    // .map(post => ({
-    //   ...post,
-    //   body:
-    //     post.body.length() < 200
-    //       ? post.body
-    //       : `${post.body.slice(0, 200)}...`,
-    // }));
+    ctx.body = posts.map(post => ({
+      ...post,
+      body: removeHtmlAndShorten(post.body),
+    }));
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -190,8 +217,13 @@ findByIdAndUpdate() id 찾아서 수정
 */
 export const update = async ctx => {
   const { id } = ctx.params;
+
+  const nextData = { ...ctx.request.body };
+  if (nextData.body) {
+    nextData.body = sanitizeHtml(nextData.body);
+  }
   try {
-    const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+    const post = await Post.findByIdAndUpdate(id, nextData, {
       new: true, //이 값을 설정하면 업데이트 된 데이터를 반환한다.
       // false인 경우 업데이트 되기 전 데이터 반환.
     }).exec();
