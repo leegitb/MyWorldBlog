@@ -5,12 +5,16 @@ import LoginPage from './pages/LoginPage';
 import PostListPage from './pages/PostListPage';
 import PostPage from './pages/PostPage';
 import WritePage from './pages/WritePage';
+import { Helmet } from 'react-helmet-async';
 // import logo from './logo.svg';
 // import './App.css';
 
 const App = () => {
   return (
     <>
+      <Helmet>
+        <title>MYWORLD</title>
+      </Helmet>
       <Route component={RegisterPage} path="/register" />
       <Route component={LoginPage} path="/login" />
       <Route component={PostListPage} path={['/@:username', '/']} exact />
