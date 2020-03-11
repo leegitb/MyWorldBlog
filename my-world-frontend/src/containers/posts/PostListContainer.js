@@ -17,14 +17,12 @@ const PostListContainer = ({ location, match }) => {
   );
 
   useEffect(() => {
-    console.log(location);
-    console.log('match.params', match.params);
     const { username } = match.params;
     const { tag, page } = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
     dispatch(listPosts({ tag, username, page }));
-  }, [dispatch, location.search]);
+  }, [dispatch, location.search, match.params]);
 
   return (
     <PostList
