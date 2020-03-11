@@ -22,7 +22,7 @@ const TagForm = styled.form`
   border-radius: 4px;
   overflow: hidden;
   display: flex;
-  width: 256px;
+  width: 280px;
   border: 1px solid ${palette.gray[9]}; /*스타일 초기화*/
   input,
   button {
@@ -37,6 +37,8 @@ const TagForm = styled.form`
   button {
     cursor: pointer;
     padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     padding-left: 1rem;
     border: none;
     background: ${palette.gray[8]};

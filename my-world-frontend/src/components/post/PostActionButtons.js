@@ -15,21 +15,21 @@ const PostActionButtonsBlock = styled.div`
 `;
 
 const ActionButton = styled.button`
-padding: 0.25rem 0.5rem;
-border-radius: 4px;
-color: ${palette.gray[6]};
-font-weight:bold;
-border:none;
-outline:none;
-font-size:0.875rem;
-cursor:pointer;
-&:hover{
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  color: ${palette.gray[6]};
+  font-weight: bold;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
     background: ${palette.gray[1]};
-    color: ${palette.cyan[7]};
-}
-&+&{
-    margin-left=0.25rem;
-}
+    color: ${palette.cyan[9]};
+  }
+  & + & {
+    margin-left: 0.75rem;
+  }
 `;
 
 const PostActionButtons = ({ onEdit, onRemove }) => {

@@ -17,7 +17,7 @@ const PostListBlock = styled(Responsive)`
 
 const WritePostButtonWrapper = styled.div`
   display: flex;
-  justfity-content: flex-end;
+  justify-content: flex-end;
   margin-bottom: 3rem;
 `;
 
@@ -31,7 +31,13 @@ const PostItemBlock = styled.div`
   & + & {
     border-top: 1px solid ${palette.gray[2]};
   }
-
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   h2 {
     font-size: 2rem;
     margin-bottom: 0;

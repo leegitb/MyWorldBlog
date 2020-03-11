@@ -11,7 +11,7 @@ const TagsBlock = styled.div`
     text-decoration: none;
     margin-right: 0.5rem;
     &:hover {
-      color: ${palette.cyan[6]};
+      text-decoration: underline;
     }
   }
 `;

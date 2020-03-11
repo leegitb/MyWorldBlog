@@ -4,6 +4,14 @@ import palette from '../../lib/styles/palette';
 import { Link } from 'react-router-dom';
 
 const SubInfoBlock = styled.div`
+a{
+  text-decoration: none;
+  color:black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
   ${props =>
     props.hasMarginTop &&
     css`

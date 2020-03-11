@@ -36,7 +36,7 @@ const AskModalBack = styled.div`
 
 const StyledButton = styled(Button)`
   height: 2rem;
-  &+&: {
+  & + & {
     margin-left: 0.75rem;
   }
 `;
@@ -44,7 +44,7 @@ const StyledButton = styled(Button)`
 const AskModal = ({
   visible,
   title,
-  discription,
+  description,
   confirmText = '확인',
   cancelText = '취소',
   onConfirm,
@@ -55,7 +55,7 @@ const AskModal = ({
     <Fullscreen>
       <AskModalBack>
         <h2>{title}</h2>
-        <p>{discription}</p>
+        <p>{description}</p>
         <div className="buttons">
           <StyledButton onClick={onCancel}>{cancelText}</StyledButton>
           <StyledButton onClick={onConfirm}>{confirmText}</StyledButton>

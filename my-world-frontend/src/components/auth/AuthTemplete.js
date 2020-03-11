@@ -28,6 +28,13 @@ const WhiteBox = styled.div`
     font-weight: bold;
     letter-spacing: 2px;
   }
+  .logo {
+    font-size: 1.125rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: black;
+  }
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
   width: 360px;
@@ -40,7 +47,9 @@ const AuthTemplete = ({ children }) => {
     <AuthTempleteBlock>
       <WhiteBox>
         <div className="logo-area">
-          <Link to="/">REACTERS</Link>
+          <Link to="/" className="logo">
+            MYWORLD
+          </Link>
         </div>
         {children}
       </WhiteBox>

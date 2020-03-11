@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import Button from '../common/Buttons';
 
 const WriteActionButtonsBlock = styled.div`
+  display: flex;
+  justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 3rem;
   button + button {
