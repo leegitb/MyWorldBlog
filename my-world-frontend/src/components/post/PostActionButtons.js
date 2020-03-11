@@ -2,7 +2,7 @@
  * 포스트 수정 / 삭제 버튼 컴포넌트
  */
 
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import AskRemoveModal from '../post/AskRemoveModal';

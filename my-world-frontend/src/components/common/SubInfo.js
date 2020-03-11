@@ -4,11 +4,11 @@ import palette from '../../lib/styles/palette';
 import { Link } from 'react-router-dom';
 
 const SubInfoBlock = styled.div`
-${props =>
-  props.hasMarginTop &&
-  css`
-    margin-top: 1rem;
-  `}
+  ${props =>
+    props.hasMarginTop &&
+    css`
+      margin-top: 1rem;
+    `}
   color: ${palette.gray[6]};
 
   /* span 사이에 가운뎃점 문자 보여주기 */
@@ -28,7 +28,7 @@ const SubInfo = ({ username, publishedDate, hasMarginTop }) => {
           <Link to={`/@${username}`}>{username}</Link>
         </b>
       </span>
-      <span>{new Date(publishedDate).toLocaleDateString}</span>
+      <span>{new Date(publishedDate).toLocaleDateString()}</span>
     </SubInfoBlock>
   );
 };
