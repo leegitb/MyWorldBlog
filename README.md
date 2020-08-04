@@ -1,10 +1,10 @@
-# MyWorld
+# My World Blog
 
 CRUD Blog with
-Front-End: React, Redux
+Front-End: ReactJS, Redux
 Back-End: Koa, MongoDB
 
-## Pages
+## Pages & Features
 
 > Login
 > ![login](./screenshots/login.jpg)
